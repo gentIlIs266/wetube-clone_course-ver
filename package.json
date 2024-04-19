@@ -1,0 +1,28 @@
+{
+  "name": "wetube-clone_course-ver",
+  "version": "1.0.0",
+  "description": "clone of wetube clone coding course from nomadcoders",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gentilis266/wetube-clone_course-ver.git"
+  },
+  "scripts": {
+    "dev": "nodemon --exec babel-node src/server.js"
+  },
+  "author": "JHS",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gentilis266/wetube-clone_course-ver/issues"
+  },
+  "homepage": "https://github.com/gentilis266/wetube-clone_course-ver#readme",
+  "dependencies": {
+    "express": "^4.19.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.4",
+    "@babel/node": "^7.23.9",
+    "@babel/preset-env": "^7.24.4",
+    "nodemon": "^3.1.0"
+  }
+}
