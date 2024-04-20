@@ -1,0 +1,17 @@
+doctype html
+html(lang="ko")
+    head
+        title Wetube clone | #{pageTitle}
+        link(rel='stylesheet', href='https://unpkg.com/mvp.css')
+    body 
+        main
+            header=pageTitle
+            input(type='text' placeholder='Search')
+            button submit
+            nav
+                ul  
+                    li
+                        a(href='/login') Login
+            block content
+
+        include footer.pug

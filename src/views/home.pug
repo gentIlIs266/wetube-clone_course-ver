@@ -1,0 +1,10 @@
+extends partials/layout.pug
+include mixins/video.pug
+
+block content
+    h5 Recommended Videos
+    ul 
+        each videoInfo in videos
+            +video(videoInfo)
+        else 
+            span Sorry, nothing found.
