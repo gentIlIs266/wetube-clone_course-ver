@@ -1,24 +1,28 @@
+let videos = [
+    {
+        title: "okitegami",
+        writer: "vaundy",
+        views:  9173936,
+        createdAt: "1 years ago",
+        id: 1
+    },
+    {
+        title: "odoriko",
+        writer: "vaundy",
+        views: 84247827,
+        createdAt: "2 years ago",
+        id: 2
+    },
+    {
+        title: "koikaze ni nosete",
+        writer: "vaundy",
+        views: 21624066,
+        createdAt: "2 years ago",
+        id: 3
+    }
+];
+
 export const recommendedVideos = (req, res) => {
-    const videos = [
-        {
-            title: "okitegami",
-            writer: "vaundy",
-            views: 4723189,
-            createdAt: "1 years ago"
-        },
-        {
-            title: "odoriko",
-            writer: "vaundy",
-            views: 534798,
-            createdAt: "2 years ago"
-        },
-        {
-            title: "koikaze ni nosete",
-            writer: "vaundy",
-            views: 809345,
-            createdAt: "2 years ago"
-        }
-    ];
     return res.render("home", {pageTitle: "Home", videos});
 }
 export const searchVideos = (req, res) => {
@@ -26,11 +30,14 @@ export const searchVideos = (req, res) => {
 }
 
 export const watchVideo = (req, res) => {
-    console.log(`The user is trying to watch video #${req.params.id}`);
-    res.render("watch-video", {pageTitle: "Watch Video"});
+    const videoId = req.params.id;
+    const selectedVideo = videos[videoId - 1];
+    return res.render("watch-video", {tabTitle: selectedVideo.title, pageTitle: `Watch ${selectedVideo.title}`, selectedVideo});
 }
 export const editVideo = (req, res) => {
-    res.render("edit-video", {pageTitle: "Edit Video"});
+    const videoId = req.params.id;
+    const selectedVideo = videos[videoId - 1];
+    res.render("edit-video", {pageTitle: `Edit ${selectedVideo.title}`});
 }
 export const deleteVideo = (req, res) => {
     res.send("delete video");

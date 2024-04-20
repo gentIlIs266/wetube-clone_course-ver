@@ -1,17 +1,15 @@
 doctype html
 html(lang="ko")
     head
-        title Wetube clone | #{pageTitle}
+        title=tabTitle
         link(rel='stylesheet', href='https://unpkg.com/mvp.css')
     body 
+        nav
+            ul  
+                li
+                    a(href='/login') Login
         main
             header=pageTitle
-            input(type='text' placeholder='Search')
-            button submit
-            nav
-                ul  
-                    li
-                        a(href='/login') Login
             block content
 
         include footer.pug
