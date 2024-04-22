@@ -34,14 +34,34 @@ export const watchVideo = (req, res) => {
     const selectedVideo = videos[videoId - 1];
     return res.render("watch-video", {tabTitle: selectedVideo.title, pageTitle: `Watch ${selectedVideo.title}`, selectedVideo});
 }
-export const editVideo = (req, res) => {
+export const getEdit = (req, res) => {
     const videoId = req.params.id;
     const selectedVideo = videos[videoId - 1];
-    res.render("edit-video", {pageTitle: `Edit ${selectedVideo.title}`});
+    res.render("edit-video", {pageTitle: `Edit ${selectedVideo.title}`, selectedVideo});
+}
+export const postEdit = (req, res) => {
+    const videoId = req.params.id;
+    const selectedVideo = videos[videoId - 1];
+    const editedTitle = req.body.title;
+    console.log(`Title ${selectedVideo.title} is changed into ${editedTitle}`);
+    selectedVideo.title = editedTitle;
+    console.log(selectedVideo); 
+    return res.redirect(`/videos/${videoId}`);
 }
 export const deleteVideo = (req, res) => {
     res.send("delete video");
 }
-export const uploadVideo = (req, res) => {
-    res.send("upload video");
+export const getUploadVideo = (req, res) => {
+    res.render("upload-video", {pageTitle: "UPLOAD VIDEO", tabTitle: "Upload Video"});
+}
+export const postUploadVideo = (req, res) => {
+    const newPostedVideo = {
+        title: req.body.title,
+        writer: req.body.writer,
+        views: 0,
+        createdAt: "0sec ago",
+        id: (videos.length + 1)
+    }
+    videos.push(newPostedVideo);
+    return res.redirect("/");
 }

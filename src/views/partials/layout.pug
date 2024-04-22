@@ -7,9 +7,14 @@ html(lang="ko")
         nav
             ul  
                 li
-                    a(href='/login') Login
+                    a(href="/login") Login
         main
-            header=pageTitle
+            header
+                h1=pageTitle
+            nav 
+                ul 
+                    li 
+                        a(href="/videos/upload") Upload Video
             block content
 
         include footer.pug

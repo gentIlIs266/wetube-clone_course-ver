@@ -1,0 +1,7 @@
+extends partials/layout.pug
+
+block content  
+    form(method="POST")
+        input(name="title" required type="text" placeholder="Enter the Title")
+        input(name="writer" required type="text" placeholder="Enter the name of writer")
+        input(type="submit" value="Upload Video" width="10")

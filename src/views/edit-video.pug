@@ -1,4 +1,7 @@
 extends partials/layout.pug
 
 block content   
-    
+    h3 Change the Title of Video
+    form(method = "POST")
+        input(name="title" placeholder="Video Title" required type="text" value=selectedVideo.title) 
+        input(placeholder="Save" type="submit")
