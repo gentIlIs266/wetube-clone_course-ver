@@ -7,7 +7,7 @@
     "url": "git+https://github.com/gentilis266/wetube-clone_course-ver.git"
   },
   "scripts": {
-    "dev": "nodemon --exec babel-node src/server.js"
+    "dev": "nodemon --exec babel-node src/init.js"
   },
   "author": "JHS",
   "license": "MIT",
