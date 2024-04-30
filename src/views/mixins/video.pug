@@ -2,7 +2,7 @@ mixin video(videoInfo)
     div 
         h4 
             a(href=`/videos/${videoInfo.id}`)
-                span #{videoInfo.title} -#{videoInfo.writer}-
+                span #{videoInfo.title}
         ul 
             li #{videoInfo.views} views
             li Posted #{videoInfo.createdAt}
