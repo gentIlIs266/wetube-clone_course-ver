@@ -1,5 +1,10 @@
 extends partials/layout.pug
 
 block content
-     h3 #{selectedVideo.views} views
-     a(href=`${selectedVideo.id}/edit`) Edit video &rsaquo;
+     div
+          p=dbVideo.description
+          p=dbVideo.hashtags
+          small=dbVideo.createdAt 
+     a(href=`${dbVideo.id}/edit`) Edit video &rsaquo;
+     br
+     a(href=`${dbVideo.id}/delete`) Delete video &rsaquo;

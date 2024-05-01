@@ -1,0 +1,10 @@
+extends partials/layout.pug
+include mixins/video.pug
+
+block content 
+    form(method="GET")
+        input(name="searchword" placeholder="Search by title" type="text" value=searchword)
+        input(name="submit" value="Search" type="submit")
+    div 
+        each videoInfo in searchedVideos
+            +video(videoInfo)
