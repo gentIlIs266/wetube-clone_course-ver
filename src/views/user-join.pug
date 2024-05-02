@@ -1,0 +1,16 @@
+extends partials/layout.pug
+
+block content
+    if errMessage
+        span=errMessage
+    form(method="POST")
+        input(name="name" required type="text" placeholder="Enter the name")
+        input(name="username" required type="text" placeholder="Enter the username that you gonna use in this site")
+        input(name="password1" required type="password" placeholder="Enter the password")
+        input(name="password2" required type="password" placeholder="Enter the password again for confirm")
+        input(name="email" required type="email" placeholder="Enter the email")
+        input(name="location" type="text" placeholder="Enter the location that you in, not necessary")
+        input(type="submit" value="Join")
+    hr
+    div     
+        a(href="/login") Already have an Account? &rsaquo;

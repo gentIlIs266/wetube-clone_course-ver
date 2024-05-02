@@ -1,0 +1,12 @@
+extends partials/layout.pug
+
+block content
+    if errMessage
+        span=errMessage
+    form(method="POST")
+        input(name="username" required type="text" placeholder="Enter the username that you gonna use in this site")
+        input(name="password" required type="password" placeholder="Enter the password")
+        input(type="submit" value="Log in")
+    hr
+    div     
+        a(href="/join") Don't have an Account? &rsaquo;    

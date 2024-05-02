@@ -2,7 +2,7 @@ import Video from "../models/Video";
 
 export const recommendedVideos = async (req, res) => {
     const dbVideos = await Video.find({})
-    return res.render("home", {pageTitle: "Home", tabTitle: "wetube", dbVideos});
+    return res.render("home", { pageTitle: "Home", tabTitle: "wetube", dbVideos });
 };
 export const searchVideos = async (req, res) => {
     const { searchword } = req.query;
@@ -21,7 +21,7 @@ export const watchVideo = async (req, res) => {
     const videoId = req.params.id;
     const dbVideo = await Video.findById(videoId);
     if (dbVideo === null) {
-        return res.render("404");    
+        return res.status(404).render("404");    
     }
     return res.render("watch-video", { pageTitle: `Watch ${dbVideo.title}`, tabTitle: dbVideo.title, dbVideo});
 }
@@ -29,9 +29,9 @@ export const getEdit = async (req, res) => {
     const videoId = req.params.id;
     const dbVideo = await Video.findById(videoId);
     if (dbVideo === null) {
-        return res.render("404");
+        return res.status(404).render("404");
     }
-    return res.render("edit-video", {pageTitle: `Edit ${dbVideo.title}`, tabTitle: `${dbVideo.title} - Editing`, dbVideo});
+    return res.render("edit-video", { pageTitle: `Edit ${dbVideo.title}`, tabTitle: `${dbVideo.title} - Editing`, dbVideo });
 }
 export const postEdit = async (req, res) => {
     const videoId = req.params.id;
@@ -53,7 +53,7 @@ export const deleteVideo = async (req, res) => {
     return res.redirect("/");
 }
 export const getUploadVideo = (req, res) => {
-    res.render("upload-video", {pageTitle: "UPLOAD VIDEO", tabTitle: "Upload Video"});
+    res.render("upload-video", { pageTitle: "UPLOAD VIDEO", tabTitle: "Upload Video" });
 }
 export const postUploadVideo = async (req, res) => {
     const { title, description, hashtags } = req.body;
@@ -66,7 +66,7 @@ export const postUploadVideo = async (req, res) => {
         });
         return res.redirect("/");
     } catch(error) {
-        res.render("upload-video", {
+        res.status(400).render("upload-video", {
             pageTitle: "UPLOAD VIDEO",
             tabTitle: "Upload Video",
             errMessage: error._message

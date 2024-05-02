@@ -4,11 +4,10 @@ block content
     if errMessage
         span=errMessage
     form(method="POST")
-        input(name="title" required type="text" placeholder="Enter the Title" value="test video title" maxlength="100")
+        input(name="title" required type="text" placeholder="Enter the Title" maxlength="100")
         input(  name="description" 
                 required type="text" 
                 placeholder="Enter the description of video" 
-                value="test video description" 
                 maxlength="5000")
-        input(name="hashtags" required type="text" placeholder="Enter the hashtag of video, separated by comma" value="a,e,i,o,u")
+        input(name="hashtags" required type="text" placeholder="Enter the hashtag of video, separated by comma")
         input(type="submit" value="Upload Video" width="10")

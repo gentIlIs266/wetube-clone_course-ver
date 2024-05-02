@@ -8,6 +8,8 @@ html(lang="ko")
             ul  
                 li
                     a(href="/login") Login
+                    br
+                    a(href="/join") join
         main
             header
                 h1=pageTitle
@@ -19,6 +21,7 @@ html(lang="ko")
                         a(href="/videos/upload") Upload Video
                     li 
                         a(href="/") Home
+                    
             block content
 
         include footer.pug
