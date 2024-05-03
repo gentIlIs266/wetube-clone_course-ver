@@ -5,11 +5,18 @@ html(lang="ko")
         link(rel='stylesheet', href='https://unpkg.com/mvp.css')
     body 
         nav
-            ul  
-                li
-                    a(href="/login") Login
-                    br
-                    a(href="/join") join
+            if locals.loggedIn
+                ul 
+                    li
+                        a(href="/logout") Log Out
+                    li  
+                        a(href="/profile") See Profile of #{locals.loggedInUser.name} &rsaquo;
+            else
+                ul  
+                    li
+                        a(href="/login") Login
+                    li
+                        a(href="/join") join
         main
             header
                 h1=pageTitle
