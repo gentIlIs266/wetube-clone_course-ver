@@ -8,7 +8,7 @@ html(lang="ko")
             if locals.loggedIn
                 ul 
                     li
-                        a(href="/logout") Log Out
+                        a(href="/users/logout") Log Out
                     li  
                         a(href="/profile") See Profile of #{locals.loggedInUser.name} &rsaquo;
             else
