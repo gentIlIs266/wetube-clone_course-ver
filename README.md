@@ -14,6 +14,3 @@
 /videos/:id/edit
 /videos/:id/delete
 /videos/upload
-
-
-fdskjljviaf;ldsjfldsajfklesjfsdjaifgasjrhogrsaogijarsi
