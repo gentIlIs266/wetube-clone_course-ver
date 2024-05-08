@@ -11,6 +11,10 @@ html(lang="ko")
                         a(href="/users/logout") Log Out
                     li  
                         a(href="/profile") See Profile of #{locals.loggedInUser.name} &rsaquo;
+                    li
+                        a(href="/users/edit") Edit Profile
+                    li 
+                        a(href="/videos/upload") Upload Video
             else
                 ul  
                     li
@@ -23,11 +27,9 @@ html(lang="ko")
             nav 
                 ul 
                     li 
-                        a(href="/search") Search Video
-                    li 
-                        a(href="/videos/upload") Upload Video
-                    li 
                         a(href="/") Home
+                    li 
+                        a(href="/search") Search Video
                     
             block content
 

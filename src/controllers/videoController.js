@@ -14,7 +14,7 @@ export const searchVideos = async (req, res) => {
             }
         })
     }
-    return res.render("search-video", { pageTitle: "Search Video", tabTitle: "Search", searchedVideos, searchword });
+    return res.render("videos/search-video", { pageTitle: "Search Video", tabTitle: "Search", searchedVideos, searchword });
 }
 
 export const watchVideo = async (req, res) => {
@@ -23,7 +23,7 @@ export const watchVideo = async (req, res) => {
     if (dbVideo === null) {
         return res.status(404).render("404");    
     }
-    return res.render("watch-video", { pageTitle: `Watch ${dbVideo.title}`, tabTitle: dbVideo.title, dbVideo});
+    return res.render("videos/watch-video", { pageTitle: `Watch ${dbVideo.title}`, tabTitle: dbVideo.title, dbVideo});
 }
 export const getEdit = async (req, res) => {
     const videoId = req.params.id;
@@ -31,7 +31,7 @@ export const getEdit = async (req, res) => {
     if (dbVideo === null) {
         return res.status(404).render("404");
     }
-    return res.render("edit-video", { pageTitle: `Edit ${dbVideo.title}`, tabTitle: `${dbVideo.title} - Editing`, dbVideo });
+    return res.render("videos/edit-video", { pageTitle: `Edit ${dbVideo.title}`, tabTitle: `${dbVideo.title} - Editing`, dbVideo });
 }
 export const postEdit = async (req, res) => {
     const videoId = req.params.id;
@@ -53,7 +53,7 @@ export const deleteVideo = async (req, res) => {
     return res.redirect("/");
 }
 export const getUploadVideo = (req, res) => {
-    res.render("upload-video", { pageTitle: "UPLOAD VIDEO", tabTitle: "Upload Video" });
+    res.render("videos/upload-video", { pageTitle: "UPLOAD VIDEO", tabTitle: "Upload Video" });
 }
 export const postUploadVideo = async (req, res) => {
     const { title, description, hashtags } = req.body;
@@ -66,7 +66,7 @@ export const postUploadVideo = async (req, res) => {
         });
         return res.redirect("/");
     } catch(error) {
-        res.status(400).render("upload-video", {
+        res.status(400).render("videos/upload-video", {
             pageTitle: "UPLOAD VIDEO",
             tabTitle: "Upload Video",
             errMessage: error._message
