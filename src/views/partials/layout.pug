@@ -3,7 +3,14 @@ html(lang="ko")
     head
         title=tabTitle
         link(rel='stylesheet', href='https://unpkg.com/mvp.css')
+        link(rel="shortcut icon", href="data:,", type="image/x-icon")
     body 
+        nav 
+            ul 
+                li 
+                    a(href="/") Home
+                li 
+                    a(href="/search") Search Video
         nav
             if locals.loggedIn
                 ul 
@@ -24,12 +31,6 @@ html(lang="ko")
         main
             header
                 h1=pageTitle
-            nav 
-                ul 
-                    li 
-                        a(href="/") Home
-                    li 
-                        a(href="/search") Search Video
                     
             block content
 

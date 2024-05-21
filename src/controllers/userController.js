@@ -7,15 +7,19 @@ export const getUserJoin = (req, res) => {
 }
 export const postUserJoin = async (req, res) => {
     const { name, username, password1, password2, email, location } = req.body;
-    const exists = await User.exists({ $or: [{ username }, { email }] });
     if (password1 !== password2) {
         return res.status(400).render("users/user-join", {
-            pageTitle: "USER JOIN", tabTitle: "user join", errMessage: "Password confirmation does not match."
+            pageTitle: "USER JOIN",
+            tabTitle: "user join",
+            errMessage: "Password confirmation does not match."
         });
     }
+    const exists = await User.exists({ $or: [{ username }, { email }] });
     if (exists) {
         return res.status(400).render("users/user-join", {
-            pageTitle: "USER JOIN", tabTitle: "user join", errMessage: "This username already exists."
+            pageTitle: "USER JOIN",
+            tabTitle: "user join",
+            errMessage: "This username or email already exists."
         });
     }
     try{   
@@ -28,13 +32,13 @@ export const postUserJoin = async (req, res) => {
         });
         return res.redirect("/login");
     } catch (error) {
-        res.status(400).render("users/user-join", {
+        return res.status(400).render("users/user-join", {
             pageTitle: "USER JOIN", 
             tabTitle: "user join", 
             errMessage: error._message
-        })
+        });
     }
-}
+};
 export const getUserLogIn = (req, res) => {
     return res.render("users/user-login", { pageTitle: "USER LOGIN", tabTitle: "user login"});
 }
@@ -78,9 +82,7 @@ export const postEditUser = async (req, res) => {
         },
         body: { name, username, email, location },
     } = req;
-    const updatedUser = await User.findByIdAndUpdate(
-        _id,
-        {
+    const updatedUser = await User.findByIdAndUpdate(_id, {
             name,
             username,
             email,

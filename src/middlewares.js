@@ -4,14 +4,14 @@ export const localsMiddleware = (req, res, next) => {
     return next();
 }
 export const protectUrlMiddleware = (req, res, next) => {
-    if (req.session.loggedIn === true) {
+    if (req.session.loggedIn) {
         return next();
     } else {
         return res.redirect("/login");
     }
 }
 export const publicOnlyMiddleware = (req, res, next) => {
-    if (req.session.loggedIn === false) {
+    if (!req.session.loggedIn) {
         return next();
     } else {
         return res.redirect("/")

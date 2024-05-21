@@ -7,6 +7,3 @@ block content
         input(name="email" required type="email" placeholder="Enter the new email" value=locals.loggedInUser.email)
         input(name="location" type="text" placeholder="Enter the location new location" value=locals.loggedInUser.location)
         input(type="submit" value="Update Profile")
-        if (!loggedinUser.socialOnly)
-            hr
-            a(href="change-password") Change password &rsaquo; 

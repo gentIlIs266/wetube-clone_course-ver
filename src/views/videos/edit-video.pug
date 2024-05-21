@@ -1,9 +1,9 @@
-extends partials/layout.pug
+extends ../partials/layout.pug
 
 block content   
     h3 Update a Video
     form(method = "POST")
         input(name="title" placeholder="Video Title" required type="text" value=dbVideo.title maxlength="100") 
-        input(name="hashtags" placeholder="Video Hashtags" required type="text" value=dbVideo.hashtags.join() maxlength="5000" htight="100px") 
         input(name="description" placeholder="Video Description" required type="text" value=dbVideo.description) 
+        input(name="hashtags" placeholder="Video Hashtags" required type="text" value=dbVideo.hashtags.join() maxlength="5000" htight="100px") 
         input(value="Submit" type="submit")

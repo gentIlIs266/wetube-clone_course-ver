@@ -7,14 +7,19 @@ import { publicOnlyMiddleware } from "../middlewares";
 const rootRouter = express.Router();
 
 rootRouter.get("/", recommendedVideos);
+
 rootRouter
     .route("/join")
+    .all(publicOnlyMiddleware)
     .get(getUserJoin)
     .post(postUserJoin);
+    
 rootRouter
     .route("/login")
+    .all(publicOnlyMiddleware)
     .get(getUserLogIn)
     .post(postUserLogIn);
+
 rootRouter.get("/search", searchVideos);
 
 export default rootRouter; 
