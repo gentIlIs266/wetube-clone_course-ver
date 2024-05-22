@@ -73,7 +73,10 @@ export const userLogOut = (req, res) => {
     return res.redirect("/");
 }
 export const getEditUser = (req, res) => {
-    res.render("users/edit-user-profile");
+    res.render("users/edit-user-profile", {
+        pageTitle: "EDIT PROFILE",
+        tabTitle: "edit profile"
+    });
 }
 export const postEditUser = async (req, res) => {
     const {
@@ -82,6 +85,24 @@ export const postEditUser = async (req, res) => {
         },
         body: { name, username, email, location },
     } = req;
+    const modifiedChecker = async (username, email) => {
+        try {
+            const findByElement = await User.findOne({ $or: [{ username }, { email }] })
+            if (typeof(findByElement) === Object) {
+                return res.status(400).render("users/edit-user-profile", {
+                    pageTitle: "EDIT PROFILE",
+                    tabTitle: "edit profile",
+                    errMessage: "There is already a user with the username or email you are trying to change."
+                })
+            }
+        } catch (error) {
+            return res.status(400).render("users/edit-user-profile", {
+                pageTitle: "EDIT PROFILE",
+                tabTitle: "edit profile",
+                errMessage: "There was a problem trying to find if there is already a userusing the username or email you are trying to use."
+            })
+        }
+    }; modifiedChecker(username, email);
     const updatedUser = await User.findByIdAndUpdate(_id, {
             name,
             username,
