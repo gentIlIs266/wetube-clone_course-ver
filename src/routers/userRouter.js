@@ -5,7 +5,7 @@ import {
     postEditUser, deleteUser, startGithubLogin,
     finishGithubLogin, getChangePassword, postChangePassword,
 } from "../controllers/userController";
-import { protectUrlMiddleware, publicOnlyMiddleware } from "../middlewares";
+import { protectUrlMiddleware, publicOnlyMiddleware, avatarUpload } from "../middlewares";
 
 const userRouter = express.Router();
 
@@ -16,7 +16,7 @@ userRouter
     .route("/edit")
     .all(protectUrlMiddleware)
     .get(getEditUser)
-    .post(postEditUser);
+    .post(avatarUpload.single("avatar"), postEditUser);
 userRouter
     .route("/change-password")
     .all(protectUrlMiddleware)

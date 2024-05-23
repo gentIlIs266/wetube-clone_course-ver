@@ -1,6 +1,7 @@
 extends ../partials/layout.pug  
 
 block content
+     video(src="/" + dbVideo.fileUrl controls) 
      div
           p=dbVideo.description
           p=dbVideo.hashtags

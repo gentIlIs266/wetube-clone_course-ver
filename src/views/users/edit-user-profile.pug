@@ -1,9 +1,15 @@
 extends ../partials/layout.pug
 
 block content 
-    form(method="POST") 
+    img(src="/" + loggedInUser.avatarUrl width="100" height ="100")
+    form(method="POST" enctype="multipart/form-data") 
+        label(for="avatar") Avatar 
+        input(name="avatar" id="avatar" type="file" accept="image/*")
         input(name="name" required type="text" placeholder="Enter the new name" value=locals.loggedInUser.name)
         input(name="username" required type="text" placeholder="Enter the new username" value=locals.loggedInUser.username)
         input(name="email" required type="email" placeholder="Enter the new email" value=locals.loggedInUser.email)
         input(name="location" type="text" placeholder="Enter the location new location" value=locals.loggedInUser.location)
         input(type="submit" value="Update Profile")
+        if !loggedInUser.socialOnly
+            hr  
+            a(href="change-password") Change password &rsaquo;    

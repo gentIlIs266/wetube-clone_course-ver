@@ -2,6 +2,8 @@ mixin video(videoInfo)
     div 
         h4 
             hr
+            video(src="/" + videoInfo.fileUrl width="400" height="230")
+            br 
             a(href=`/videos/${videoInfo._id}`)=videoInfo.title
             p=videoInfo.description
             small=videoInfo.createdAt
