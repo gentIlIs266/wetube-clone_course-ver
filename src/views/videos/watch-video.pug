@@ -6,6 +6,9 @@ block content
           p=dbVideo.description
           p=dbVideo.hashtags
           small=dbVideo.createdAt 
-     a(href=`${dbVideo.id}/edit`) Edit video &rsaquo;
-     br
-     a(href=`${dbVideo.id}/delete`) Delete video &rsaquo;
+     div  
+          a(href=`/users/${dbVideo.owner._id}`)  #{dbVideo.owner.name}
+     if String(dbVideo.owner._id) === String(locals.loggedInUser._id) 
+          a(href=`${dbVideo.id}/edit`) Edit video &rsaquo;
+          br
+          a(href=`${dbVideo.id}/delete`) Delete video &rsaquo;

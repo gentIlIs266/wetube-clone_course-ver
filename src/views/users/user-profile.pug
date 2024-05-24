@@ -1,0 +1,8 @@
+extends ../partials/layout.pug
+include ../mixins/video.pug
+
+block content   
+    each videoInfo in user.videos 
+        +video(videoInfo)
+    else 
+        span Sorry, nothing found.

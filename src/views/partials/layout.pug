@@ -17,7 +17,7 @@ html(lang="ko")
                     li
                         a(href="/users/logout") Log Out
                     li  
-                        a(href="/profile") See Profile of #{locals.loggedInUser.name} &rsaquo;
+                        a(href=`/users/${locals.loggedInUser._id}`) My Profile &rsaquo;
                     li
                         a(href="/users/edit") Edit Profile
                     li 

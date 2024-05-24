@@ -1,4 +1,5 @@
 import User from "../models/User"; 
+import Video from "../models/Video"; 
 import fetch from "node-fetch";
 import bcrypt from "bcrypt";
 
@@ -65,8 +66,17 @@ export const postUserLogIn = async (req, res) => {
     return res.redirect("/");
 }
 
-export const seeUser = (req, res) => {
-    res.send("see user profile");
+export const seeUserProfile = async (req, res) => {
+    const { id } = req.params;
+    const user = await User.findById(id).populate("videos");
+    if (!user) {
+        return res.status(404).render("404");
+    }
+    return res.render("users/user-profile", {
+        pageTitle: `${user.name}'s PROFILE`,
+        tabTitle: "user profile",
+        user,
+    })
 }
 export const userLogOut = (req, res) => {
     req.session.destroy();

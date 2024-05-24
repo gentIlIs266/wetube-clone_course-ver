@@ -1,15 +1,16 @@
 import express from "express";
 
 import {
-    seeUser, userLogOut, getEditUser,
+    seeUserProfile, userLogOut, getEditUser,
     postEditUser, deleteUser, startGithubLogin,
     finishGithubLogin, getChangePassword, postChangePassword,
+    
 } from "../controllers/userController";
 import { protectUrlMiddleware, publicOnlyMiddleware, avatarUpload } from "../middlewares";
 
 const userRouter = express.Router();
 
-userRouter.get(":id", seeUser);
+userRouter.get("/:id", seeUserProfile);
 userRouter.get("/logout", protectUrlMiddleware, userLogOut);
 
 userRouter
