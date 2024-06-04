@@ -2,38 +2,12 @@ doctype html
 html(lang="ko")
     head
         title=tabTitle
-        link(rel='stylesheet', href='https://unpkg.com/mvp.css')
-        link(rel='stylesheet', href="/assets/css/style.css")
         link(rel="shortcut icon", href="data:,", type="image/x-icon")
+        link(rel='stylesheet', href="/assets/css/style.css")
+        link(rel='stylesheet', href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css")
     body 
-        nav 
-            ul 
-                li 
-                    a(href="/") Home
-                li 
-                    a(href="/search") Search Video
-        nav
-            if locals.loggedIn
-                ul 
-                    li
-                        a(href="/users/logout") Log Out
-                    li  
-                        a(href=`/users/${locals.loggedInUser._id}`) My Profile &rsaquo;
-                    li
-                        a(href="/users/edit") Edit Profile
-                    li 
-                        a(href="/videos/upload") Upload Video
-            else
-                ul  
-                    li
-                        a(href="/login") Login
-                    li
-                        a(href="/join") join
+        include header.pug
         main
-            header
-                h1=pageTitle
-                    
             block content
-
         include footer.pug
-        script(src="/assets/js/main.js") 
+        script(src="/assets/js/index.js") 

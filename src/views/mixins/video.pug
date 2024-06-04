@@ -1,9 +1,14 @@
 mixin video(videoInfo)
-    div 
-        h4 
-            hr
-            video(src="/" + videoInfo.fileUrl width="400" height="230")
-            br 
-            a(href=`/videos/${videoInfo._id}`)=videoInfo.title
-            p=videoInfo.description
-            small=videoInfo.createdAt
+    a(href=`/videos/${videoInfo._id}`)
+        div#content
+            div#thumbnail
+                    video(src=`/${videoInfo.fileUrl}`)
+            div#details
+                a#avatar-link
+                div#meta
+                    h3=videoInfo.title
+                    div#metadata
+                        a(href="/" + videoInfo.owner.id)=videoInfo.owner.name  
+                        br
+                        small=`${videoInfo.meta.views}회 · ` 
+                        small=videoInfo.createdAt

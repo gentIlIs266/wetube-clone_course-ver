@@ -1,0 +1,33 @@
+header {
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .header__logo {
+        color: $red;
+        font-size: 30px;
+        i {
+            font-size: 27px;
+        }
+    }
+    ul {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        li {
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 25px;
+            text-transform: uppercase;
+        }
+    }
+    i {
+        font-size: 16px;
+    }
+    .header__button {
+        background-color: #fff;
+        color: $bg;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+}

@@ -11,11 +11,12 @@ block content
         input(name="email" required type="email" placeholder="Enter the email")
         input(name="location" type="text" placeholder="Enter the location that you in, not necessary")
         input(type="submit" value="Join")
-    hr
-    div     
-        a(href="/login") Already have an Account? &rsaquo;
+    div.social-login-container
+        include ../partials/social-login.pug
         br
-        span Or   
+        span.or__span
+            | or  
         br
-        a(href="users/github/start") Continue With GitHub &rsaquo;
+        a(href="/login").goto-login-page
+            | Already have an Account? &rsaquo;
 

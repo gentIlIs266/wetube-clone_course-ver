@@ -3,23 +3,29 @@ import User from "../models/User";
 
 export const recommendedVideos = async (req, res) => {
     const dbVideos = await Video.find({})
-    return res.render("home", { pageTitle: "Home", tabTitle: "wetube", dbVideos });
+        .sort({ createdAt: "desc" })
+        .populate("owner")
+    return res.render("home", {
+        pageTitle: "Home",
+        tabTitle: "wetube",
+        dbVideos
+    });
 };
 export const searchVideos = async (req, res) => {
-    const { searchword } = req.query;
+    const { search_query } = req.query;
     let searchedVideos = [];
-    if (searchword) {
+    if (search_query) {
         searchedVideos = await Video.find({
             title: {
-                $regex: new RegExp(searchword, "i") 
+                $regex: new RegExp(search_query, "i") 
             }
-        })
+        }).populate("owner")
     }
     return res.render("videos/search-video", {
         pageTitle: "Search Video",
         tabTitle: "Search",
         searchedVideos,
-        searchword
+        search_query
     });
 }
 

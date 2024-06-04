@@ -68,7 +68,12 @@ export const postUserLogIn = async (req, res) => {
 
 export const seeUserProfile = async (req, res) => {
     const { id } = req.params;
-    const user = await User.findById(id).populate("videos");
+    const user = await User.findById(id).populate({
+        path:"videos",
+        populate:[
+            { path: "owner" }
+        ]
+    });
     if (!user) {
         return res.status(404).render("404");
     }
@@ -110,7 +115,7 @@ export const postEditUser = async (req, res) => {
             return res.status(400).render("users/edit-user-profile", {
                 pageTitle: "EDIT PROFILE",
                 tabTitle: "edit profile",
-                errMessage: "There was a problem trying to find if there is already a userusing the username or email you are trying to use."
+                errMessage: "There was a problem trying to find if there is already a user using the username or email you are trying to use."
             })
         }
     }; modifiedChecker(username, email);

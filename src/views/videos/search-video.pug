@@ -2,9 +2,43 @@ extends ../partials/layout.pug
 include ../mixins/video.pug
 
 block content 
-    form(method="GET")
-        input(name="searchword" placeholder="Search by title" type="text" value=searchword)
-        input(name="submit" value="Search" type="submit")
-    div 
+    div#search
+        form(method="GET")#search__form
+            div#container
+                div#search__input
+                    input(
+                        name="search_query"
+                        value=search_query
+                        autocapitalize="none"
+                        autocomplete="off"  
+                        autocorrect="off"
+                        tabindex="0"
+                        type="text"
+                        spellcheck="false"
+                        placeholder="검색"
+                        aria-label="검색"
+                        role="combobox"
+                        style="border: none; padding: 0px; margin :0px; height: auto; width: 100%; outline: none;"
+                    )
+                div#search-clear__button
+                    button(aria-label="검색어 삭제")
+                        div(style="width: 24px; height: 24px;")
+                            div(style="width: 100%; height: 100%; display: block; fill: currentcolor;").icon-shape
+                                svg(
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    enable-background="new 0 0 24 24"
+                                    height="24"
+                                    viewbox="0 0 24 24"
+                                    width="24"
+                                    focusable="flase"
+                                    style="pointer-events: none; display: inherit; width: 100%; height: 100%"
+                                    )
+                                        path(d="m 12.71 12 l 8.15 8.15 l -0.71 0.71 L 12 12.71 l -8.15 8.15 l -0.71 -0.71 L 11.29 12 L 3.15 3.85 l 0.71 -0.71 L 12 11.29 l 8.15 -8.15 l 0.71 0.71 L 12.71 12 Z")
+            button(aria-label="검색")#search-icon-legacy
+                i.fas.fa-search
+    div#contents
         each videoInfo in searchedVideos
             +video(videoInfo)
+        else 
+            span.empty__message No videos found
+            

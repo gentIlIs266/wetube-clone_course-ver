@@ -2,7 +2,11 @@ extends ../partials/layout.pug
 include ../mixins/video.pug
 
 block content   
-    each videoInfo in user.videos 
-        +video(videoInfo)
-    else 
-        span Sorry, nothing found.
+    div#profile-data
+        img(src=`/${user.avatarUrl}`, alt="no images")#avatar__img
+        h3=user.name
+    div#contents
+        each videoInfo in user.videos 
+            +video(videoInfo)
+        else 
+            span Sorry, nothing found.

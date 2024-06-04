@@ -2,7 +2,8 @@ extends partials/layout.pug
 include mixins/video.pug
 
 block content
-    each videoInfo in dbVideos
-        +video(videoInfo)
-    else 
-        span Sorry, nothing found.
+    div#contents
+        each videoInfo in dbVideos
+            +video(videoInfo)
+        else 
+            span.empty__message No video found
