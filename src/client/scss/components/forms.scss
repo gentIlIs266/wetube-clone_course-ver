@@ -1,4 +1,4 @@
-input {
+input:not([type="range"]) {
     display: block;
     white-space: normal;
     overflow: initial;

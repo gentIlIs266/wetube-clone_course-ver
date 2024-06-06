@@ -2,13 +2,30 @@ extends ../partials/layout.pug
 
 block content
      video(src="/" + dbVideo.fileUrl controls) 
-     div
-          p=dbVideo.description
-          p=dbVideo.hashtags
-          small=dbVideo.createdAt 
-     div  
-          a(href=`/users/${dbVideo.owner._id}`)  #{dbVideo.owner.name}
-     if String(dbVideo.owner._id) === String(locals.loggedInUser._id) 
-          a(href=`${dbVideo.id}/edit`) Edit video &rsaquo;
-          br
-          a(href=`${dbVideo.id}/delete`) Delete video &rsaquo;
+     div 
+          button#playButton Play
+               //- svg(height="100%" version="1.1" viewBox="0 0 36 36" width="100%")
+               //-      use.svg-shadow 
+               //-      path(d="M 12 26 L 18.5 22 L 18.5 14 L 12 10 Z M 18.5 22 L 25 18 L 25 18 L 18.5 14 Z").svg-fill
+          button#nextVideo nextVideo
+          button#muteButton mute
+          input(type="range" value=0.5 min="0" max="1" step="0.01")#volume-range
+          span#playTime 00:00 / 00:00
+          button#autoPlay autoPlay
+          button#subtitle subtitle
+          button#config config
+          button#smallPlayer smallPlayer 
+          button#cinemaMode cinemaMode 
+          button#fullScreen fullScreen 
+     //- div
+     //-      p=dbVideo.description
+     //-      p=dbVideo.hashtags
+     //-      small=dbVideo.createdAt 
+     //- div  
+     //-      a(href=`/users/${dbVideo.owner._id}`)  #{dbVideo.owner.name}
+     //- if String(dbVideo.owner._id) === String(locals.loggedInUser._id) 
+     //-      a(href=`${dbVideo.id}/edit`) Edit video &rsaquo;
+     //-      br
+     //-      a(href=`${dbVideo.id}/delete`) Delete video &rsaquo;
+block script 
+     script(src="/assets/js/videoPlayer.js") 
